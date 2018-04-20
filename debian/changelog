@@ -1,0 +1,348 @@
+libnih (1.0.3-6ubuntu2) bionic; urgency=medium
+
+  * Adjust testsuite for current expat release to fix FTBFS
+
+ -- Julian Andres Klode <juliank@ubuntu.com>  Fri, 20 Apr 2018 15:10:05 +0200
+
+libnih (1.0.3-6ubuntu1) zesty; urgency=medium
+
+  * Merge with Debian; remaining changes: Same as before.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 03 Nov 2016 20:06:47 +0100
+
+libnih (1.0.3-6) unstable; urgency=medium
+
+  * QA upload.
+  * Fix wrong ptrace expectations in test_child.c, causing the testsuite
+    to fail with glibc >= 2.24.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 04 Sep 2016 13:42:04 +0200
+
+libnih (1.0.3-5) unstable; urgency=medium
+
+  * QA upload.
+  * Orphaning package, maintainer not active.
+  * Bump Policy Standards-Version to 3.9.8 (no changes needed)
+
+ -- Manuel A. Fernandez Montecelo <mafm@debian.org>  Thu, 26 May 2016 23:32:50 +0100
+
+libnih (1.0.3-4.3ubuntu1) xenial; urgency=medium
+
+  * Merge with Debian; remaining changes: Same as before.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 08 Jan 2016 13:34:51 +0100
+
+libnih (1.0.3-4.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Run dh-autoreconf to update config.{sub,guess} and
+    {libtool,aclocal}.m4, necessary for some new ports.  Thanks Mauricio
+    Faria de Oliveira.  (Closes: #689622)
+
+ -- Manuel A. Fernandez Montecelo <mafm@debian.org>  Tue, 15 Jul 2014 20:06:36 +0100
+
+libnih (1.0.3-4.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Cherry-pick from upstream: update dbus code generator to allow for empty
+    lists for type 'as'.  Closes: #728036.
+
+ -- Steve Langasek <vorlon@debian.org>  Mon, 11 Nov 2013 07:37:27 +0000
+
+libnih (1.0.3-4.1) unstable; urgency=low
+
+  * Non-maintainer Upload.
+
+  [ Petr Lautrbach <plautrba@redhat.com>, Dmitrijs Ledkovs ]
+  * Fallback to lstat, if dirent.d_type is not available (not portable)
+    Closes: #695604
+
+ -- Michael Stapelberg <stapelberg@debian.org>  Mon, 31 Dec 2012 18:32:21 +0100
+
+libnih (1.0.3-4ubuntu27) vivid; urgency=medium
+
+  * No change rebuild to get debug symbols on all architectures.
+
+ -- Brian Murray <brian@ubuntu.com>  Mon, 17 Nov 2014 09:04:22 -0800
+
+libnih (1.0.3-4ubuntu26) utopic; urgency=medium
+
+  [ Dimitri John Ledkov ]
+  * Remove versioned libc6-dev build-dependencies, any recent one will do.
+  
+  [ James Hunt ]
+  * Fix crash in test_output, print_last by avoiding passing NULL to
+    atoi(3).
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Sun, 04 May 2014 00:53:42 +0100
+
+libnih (1.0.3-4ubuntu25) trusty; urgency=low
+
+  [ Dmitrijs Ledkovs ]
+  * libnih-dbus should depend on dbus-1, in debian/control -dev package
+    and pkgconfig file.
+  * Add :native build-dependencies, now that the archive supports them,
+    thus making libnih cross-buildable by dpkg tools.
+  * wrap-and-sort debian/control.
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Thu, 13 Feb 2014 21:03:48 +0000
+
+libnih (1.0.3-4ubuntu24) trusty; urgency=low
+
+  * Do not blindly use passed pointer to the TEST_FUNCTION (et.al),
+    instead make a strncpy of it. Since passed pointer can be freed behind
+    our back, when we still need it.
+
+ -- Dmitrijs Ledkovs <xnox@ubuntu.com>  Tue, 12 Nov 2013 13:20:50 +0000
+
+libnih (1.0.3-4ubuntu23) trusty; urgency=low
+
+  * Split test_node.c into two translation units. (LP: #1248677)
+
+ -- Dmitrijs Ledkovs <xnox@ubuntu.com>  Mon, 11 Nov 2013 00:17:41 +0000
+
+libnih (1.0.3-4ubuntu22) trusty; urgency=low
+
+  * Update TAP output patch to latest.
+  * Disable parallel running of test-suite, not deterministic.
+
+ -- Dmitrijs Ledkovs <xnox@ubuntu.com>  Sat, 09 Nov 2013 23:33:39 +0000
+
+libnih (1.0.3-4ubuntu20) trusty; urgency=low
+
+  * Add autopkgtest to run full testsuite.
+
+ -- Dmitrijs Ledkovs <xnox@ubuntu.com>  Thu, 07 Nov 2013 14:03:08 +0000
+
+libnih (1.0.3-4ubuntu19) trusty; urgency=low
+
+  * Fix TEST_FUNCTION_FEATURE formatting.
+
+ -- Dmitrijs Ledkovs <xnox@ubuntu.com>  Thu, 07 Nov 2013 04:01:12 +0000
+
+libnih (1.0.3-4ubuntu18) trusty; urgency=low
+
+  * Optimise TAP compatible test-suite, generated out of range conditional
+    branches on arm*, but not any other platforms.
+
+ -- Dmitrijs Ledkovs <xnox@ubuntu.com>  Thu, 07 Nov 2013 00:18:03 +0000
+
+libnih (1.0.3-4ubuntu17) trusty; urgency=low
+
+  * Apply patch to generate TAP compatible test-suite output.
+
+ -- Dmitrijs Ledkovs <xnox@ubuntu.com>  Wed, 06 Nov 2013 17:37:27 +0000
+
+libnih (1.0.3-4ubuntu16) raring; urgency=low
+
+  * debian/{libnih1.postinst,libnih-dbus1.postinst}: Force an upgrade to
+    restart Upstart (to pick up new package version) if the running
+    instance supports it.
+  * Merge of important fixes from lp:~upstart-devel/libnih/nih
+    (LP: #776532, LP: #777097, LP: #834813, LP: #1123588).
+
+ -- James Hunt <james.hunt@ubuntu.com>  Thu, 14 Mar 2013 09:14:22 +0000
+
+libnih (1.0.3-4ubuntu15) raring; urgency=low
+
+  * Enable cross-building, sans adding :native build-dependencies.
+    See comments in debian/control.
+  * Lintian fixes.
+
+ -- Dmitrijs Ledkovs <dmitrij.ledkov@ubuntu.com>  Tue, 08 Jan 2013 15:38:58 +0000
+
+libnih (1.0.3-4ubuntu14) raring; urgency=low
+
+  * Update dbus code generator to allow for empty lists for type 'as'.
+    This drops the != NULL check for NULL terminated arrays and moves the
+    iteration loop inside an 'if' statement.
+
+ -- Stéphane Graber <stgraber@ubuntu.com>  Thu, 13 Dec 2012 10:00:27 -0500
+
+libnih (1.0.3-4ubuntu13) raring; urgency=low
+
+  [ Petr Lautrbach <plautrba@redhat.com>, Dmitrijs Ledkovs ]
+  * Fallback to lstat, if dirent.d_type is not available (not portable)
+    (LP: #672643) (Closes: #695604)
+
+ -- Dmitrijs Ledkovs <dmitrij.ledkov@ubuntu.com>  Tue, 11 Dec 2012 17:26:52 +0000
+
+libnih (1.0.3-4ubuntu12) raring; urgency=low
+
+  * nih/logging.c: Use our own __nih_abort_msg rather than the (e)glibc
+    private symbol __abort_msg to avoid upgrade issues (LP: #997359).
+  * nih/tests/test_logging.c: Update tests for __nih_abort_msg.
+
+ -- James Hunt <james.hunt@ubuntu.com>  Thu, 25 Oct 2012 10:57:30 +0100
+
+libnih (1.0.3-4ubuntu11) quantal; urgency=low
+
+  * Addition of debian/libnih-dbus1.postinst and
+    debian/libnih1.postinst to force Upstart re-exec on shutdown
+    to avoid unmounting disks uncleanly (LP: #740390).
+
+ -- James Hunt <james.hunt@ubuntu.com>  Wed, 03 Oct 2012 16:49:40 +0100
+
+libnih (1.0.3-4ubuntu10) quantal; urgency=low
+
+  * Update config.guess,sub for aarch64
+
+ -- Wookey <wookey@wookware.org>  Mon, 01 Oct 2012 12:57:05 +0100
+
+libnih (1.0.3-4ubuntu9) precise; urgency=low
+
+  * Mark the nih-dbus-tool package Multi-Arch: foreign so it can be used as
+    a build-dependency of upstart when cross-building.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Wed, 15 Feb 2012 22:57:50 -0800
+
+libnih (1.0.3-4ubuntu8) precise; urgency=low
+
+  * libnih1 needs a versioned Pre-Depend on libc6 instead of just a Depend,
+    because libc6 itself uses runlevel from the upstart package in its
+    preinst, which in turn uses libnih1, which needs to be loadable (i.e.,
+    its symbol references resolve).  We therefore need to ensure that
+    libnih1's dependencies are always unpacked before libnih1 itself is
+    unpacked.  While having something further up the stack (such as upstart,
+    or something on top of upstart) being marked Essential: yes and with the
+    necessary pre-depends would let apt handle this for us with its
+    "immediate configuration" support, but for various reasons we don't want
+    to make upstart essential.  LP: #508083.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Fri, 10 Feb 2012 12:13:25 -0800
+
+libnih (1.0.3-4ubuntu7) precise; urgency=low
+
+  * Relax dependency on libc6.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 08 Feb 2012 23:43:21 +0100
+
+libnih (1.0.3-4ubuntu6) precise; urgency=low
+
+  * Rebuild with libc6-dev (>= 2.15~).
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 08 Feb 2012 21:48:57 +0100
+
+libnih (1.0.3-4ubuntu5) precise; urgency=low
+
+  * Mark libnih-dev and libnih-dbus-dev Multi-Arch: same as well.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Sun, 06 Nov 2011 14:45:07 -0800
+
+libnih (1.0.3-4ubuntu4) precise; urgency=low
+
+  * Make libnih1 and libnih-dbus1 installable using multi-arch.
+
+ -- James Hunt <james.hunt@ubuntu.com>  Tue, 01 Nov 2011 14:25:09 -0400
+
+libnih (1.0.3-4ubuntu3) precise; urgency=low
+
+  * Build to install with eglibc-2.15.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 14 Oct 2011 14:05:03 +0200
+
+libnih (1.0.3-4ubuntu2) oneiric; urgency=low
+
+  * Use dpkg-buildflags to get the build flags.
+  * Build with the default build flags, don't hard-code -Os. LP: #791315.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 15 Jun 2011 16:45:42 +0200
+
+libnih (1.0.3-4ubuntu1) oneiric; urgency=low
+
+  * Merge from debian unstable. Retained Ubuntu Build-Depends and Priority.
+
+ -- James Hunt <james.hunt@ubuntu.com>  Mon, 23 May 2011 19:28:19 +0100
+
+libnih (1.0.3-1ubuntu1) natty; urgency=low
+
+  * Rebuild with libc6-dev (>= 2.13~).
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 18 Feb 2011 12:09:29 +0100
+
+libnih (1.0.3-1) natty; urgency=low
+
+  * New upstream release:
+    - Added support for passing file descriptors over D-Bus to nih-dbus-tool
+
+ -- Scott James Remnant <scott@ubuntu.com>  Thu, 23 Dec 2010 22:28:24 +0000
+
+libnih (1.0.2-2) natty; urgency=low
+
+  * Revert the previous upload.  It is never acceptable to simply disable
+    tests, especially when it turns out that the test that was disabled
+    was failing because there was a serious bug that could cause kernel
+    panics for people on boot.
+
+    Test suites are here for a reason.
+
+  * Bumped libdbus Build-Dependency to the version with the bug fix that
+    caused the test suite to fail.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Wed, 08 Dec 2010 19:40:15 +0000
+
+libnih (1.0.2-1ubuntu3) natty; urgency=low
+
+  * Disable some tests on ppc64 to build an initial package.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 18 Nov 2010 10:59:38 +0100
+
+libnih (1.0.2-1ubuntu2) maverick; urgency=low
+
+  * Re-add -fPIE to the testsuite on armel, removing all armel-specific tests;
+    current gcc-4.4 don't seem affected by the ICE anymore (see LP #398403).
+
+ -- Loïc Minier <loic.minier@linaro.org>  Mon, 23 Aug 2010 10:25:31 +0200
+
+libnih (1.0.2-1ubuntu1) maverick; urgency=low
+
+  * Rebuild with libc6-dev (>= 2.12~), after checking that
+    __abort_msg is available with the same signature in eglibc 2.12.
+  * Don't build the testsuite with -fPIE on armel; LP: #398403.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 30 May 2010 02:54:56 +0200
+
+libnih (1.0.2-1) maverick; urgency=low
+
+  * New upstream release:
+    - Rename AC_COPYRIGHT to NIH_COPYRIGHT to avoid conflict with other
+      packages.
+    - Add serial to libnih.m4
+    - Add NIH_WITH_LOCAL_LIBNIH macro.
+
+  * Fix use of ${Source-Version} to be ${binary:Version}
+  * Add debian/source/format with "1.0" to be future compatible.
+  * Bump standards version.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Tue, 27 Apr 2010 10:49:55 -0700
+
+libnih (1.0.1-1) lucid; urgency=low
+
+  * New upstream release:
+    - Add missing __nih_* symbols to linker version script so that we
+      can link Upstart's test suite.
+    - Glibc __abort_msg symbol now only linked as a weak symbol.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Thu, 04 Feb 2010 14:53:26 -0800
+
+libnih (1.0.0-2build1) lucid; urgency=low
+
+  * Rebuild to pick up relaxed dependency on libc6, after checking that
+    __abort_msg is available with the same signature in eglibc 2.11.
+    LP: #508702.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 18 Jan 2010 16:09:13 +0100
+
+libnih (1.0.0-2) lucid; urgency=low
+
+  * debian/control: Add build-dependency on dbus so the test suite can
+    pass on the buildds.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Sat, 28 Nov 2009 23:28:27 +0000
+
+libnih (1.0.0-1) lucid; urgency=low
+
+  * First upstream release.  Previously this code was included in the
+    upstart, mountall and ureadahead source packages.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Sat, 28 Nov 2009 21:14:00 +0000

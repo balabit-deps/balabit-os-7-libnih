@@ -344,9 +344,9 @@ NIH_BEGIN_EXTERN
 
 void          nih_tree_init           (NihTree *tree);
 NihTree *     nih_tree_new            (const void *parent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 NihTreeEntry *nih_tree_entry_new      (const void *parent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NihTree *     nih_tree_add            (NihTree *tree, NihTree *node,
 				       NihTreeWhere where);

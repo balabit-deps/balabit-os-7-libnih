@@ -46,11 +46,11 @@ static int   nih_dbus_proxy_name_track        (NihDBusProxy *proxy)
 	__attribute__ ((warn_unused_result));
 static char *nih_dbus_proxy_name_rule         (const void *parent,
 					       NihDBusProxy *proxy)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 static int   nih_dbus_proxy_signal_destroy    (NihDBusProxySignal *proxied);
 static char *nih_dbus_proxy_signal_rule       (const void *parent,
 					       NihDBusProxySignal *proxied)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 /* Prototypes for handler functions */
 static DBusHandlerResult nih_dbus_proxy_name_owner_changed (DBusConnection *connection,

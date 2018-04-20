@@ -124,11 +124,11 @@ NIH_BEGIN_EXTERN
 char **    nih_option_parser         (const void *parent,
 				      int argc, char *argv[],
 				      NihOption *options, int break_nonopt)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NihOption *nih_option_join           (const void *parent,
 				      const NihOption *a, const NihOption *b)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 int        nih_option_count          (NihOption *option, const char *arg);
 int        nih_option_int            (NihOption *option, const char *arg);

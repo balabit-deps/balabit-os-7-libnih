@@ -146,14 +146,14 @@ NihDBusProxy *      nih_dbus_proxy_new     (const void *parent,
 					    const char *name, const char *path,
 					    NihDBusLostHandler lost_handler,
 					    void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NihDBusProxySignal *nih_dbus_proxy_connect (NihDBusProxy *proxy,
 					    const NihDBusInterface *interface,
 					    const char *name,
 					    NihDBusSignalHandler handler,
 					    void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NIH_END_EXTERN
 

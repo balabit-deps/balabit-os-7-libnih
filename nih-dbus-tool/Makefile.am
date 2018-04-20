@@ -41,6 +41,7 @@ nih_dbus_tool_LDADD = \
 	$(DBUS_LIBS)
 
 
+LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) $(top_srcdir)/tap-driver.sh
 TESTS = \
 	test_main \
 	test_symbol \
@@ -49,6 +50,7 @@ TESTS = \
 	test_marshal \
 	test_demarshal \
 	test_node \
+	test_node_part2 \
 	test_interface \
 	test_method \
 	test_signal \
@@ -116,6 +118,16 @@ test_demarshal_LDADD = \
 test_node_SOURCES = tests/test_node.c
 test_node_LDFLAGS = -static
 test_node_LDADD = \
+	demarshal.o marshal.o type.o indent.o \
+	parse.o annotation.o argument.o property.o signal.o method.o \
+	interface.o node.o symbol.o \
+	../nih/libnih.la \
+	$(EXPAT_LIBS) \
+	$(DBUS_LIBS)
+
+test_node_part2_SOURCES = tests/test_node_part2.c
+test_node_part2_LDFLAGS = -static
+test_node_part2_LDADD = \
 	demarshal.o marshal.o type.o indent.o \
 	parse.o annotation.o argument.o property.o signal.o method.o \
 	interface.o node.o symbol.o \

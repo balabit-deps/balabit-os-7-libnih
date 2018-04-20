@@ -2,8 +2,8 @@
  *
  * io.c - file and socket input/output handling
  *
- * Copyright © 2009 Scott James Remnant <scott@netsplit.com>.
- * Copyright © 2009 Canonical Ltd.
+ * Copyright © 2011 Scott James Remnant <scott@netsplit.com>.
+ * Copyright © 2011 Canonical Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2, as
@@ -165,6 +165,7 @@ nih_io_select_fds (int    *nfds,
 	nih_assert (readfds != NULL);
 	nih_assert (writefds != NULL);
 	nih_assert (exceptfds != NULL);
+	nih_assert (*nfds <= FD_SETSIZE);
 
 	nih_io_init ();
 
@@ -186,6 +187,9 @@ nih_io_select_fds (int    *nfds,
 			*nfds = nih_max (*nfds, watch->fd + 1);
 		}
 	}
+
+	/* Re-check in case we exceeded the limit in the loop */
+	nih_assert (*nfds <= FD_SETSIZE);
 }
 
 /**
@@ -901,7 +905,7 @@ error:
  * read and placed into the receive buffer or queue, and the reader function
  * is called if set.
  *
- * Any data or messaages in the send buffer or queue are written out if the
+ * Any data or messages in the send buffer or queue are written out if the
  * @events includes NIH_IO_WRITE.
  *
  * Errors are handled when data is read, and result in the error handled
@@ -1211,7 +1215,7 @@ nih_io_error (NihIo *io)
  * This function is called when the local end of a file descriptor being
  * managed by NihIo should be closed.  Usually this is because the remote
  * end has been closed (without error) but it can also be because no
- * error handler was given
+ * error handler was given.
  *
  * Normally this just calls the close handler, or if not available, it
  * closes the file descriptor and frees the structure (which may be
@@ -1291,7 +1295,7 @@ nih_io_shutdown_check (NihIo *io)
  * @io: structure to be destroyed.
  *
  * Closes the file descriptor associated with an NihIo structure so that
- * the structure can be freed.  IF an error is caught by closing the
+ * the structure can be freed.  If an error is caught by closing the
  * descriptor, the error handler is called instead of the error being raised;
  * this allows you to group your error handling in one place rather than
  * special-case close.

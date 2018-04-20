@@ -138,7 +138,7 @@ void             nih_main_loop_exit      (int status);
 
 NihMainLoopFunc *nih_main_loop_add_func  (const void *parent,
 					  NihMainLoopCb callback, void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 void             nih_main_term_signal    (void *data, NihSignal *signal);
 

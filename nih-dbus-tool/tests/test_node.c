@@ -6138,6 +6138,7 @@ test_proxy_functions (void)
 
 	TEST_FUNCTION ("node_proxy_functions");
 
+#ifndef _TEST_NODE_PART_2
 
 	/* Check that we can generate all of the functions needed for a remote
 	 * Node's proxy implementation.  Each static function should have its
@@ -10144,6 +10145,7 @@ test_proxy_functions (void)
 	}
 
 
+#else
 	/* Check that we can still generate all of the functions even if
 	 * there are no signals in the object implementation.
 	 */
@@ -16731,6 +16733,7 @@ test_proxy_functions (void)
 		nih_free (str);
 		nih_free (node);
 	}
+#endif
 }
 
 
@@ -16741,6 +16744,7 @@ main (int   argc,
 	program_name = "test";
 	nih_error_init ();
 
+#ifndef _TEST_NODE_PART_2
 	test_path_valid ();
 	test_new ();
 	test_start_tag ();
@@ -16749,6 +16753,7 @@ main (int   argc,
 
 	test_interfaces_array ();
 	test_object_functions ();
+#endif
 	test_proxy_functions ();
 
 	return 0;

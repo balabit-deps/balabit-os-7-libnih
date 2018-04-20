@@ -61,8 +61,7 @@ NihDBusObject *nih_dbus_object_new (const void *parent,
 				    DBusConnection *connection,
 				    const char *path,
 				    const NihDBusInterface **interfaces,
-				    void *data)
-	__attribute__ ((malloc));
+				    void *data);
 
 NIH_END_EXTERN
 

@@ -8733,7 +8733,7 @@ test_proxy_set_sync_function (void)
 	TypeVar *       var;
 	NihListEntry *  attrib;
 	NihDBusProxy *  proxy = NULL;
-	void *          parent = NULL;
+	void *          parent __attribute__((unused)) = NULL;
 	pid_t           pid = -1;
 	int             status;
 	DBusMessage *   method_call;

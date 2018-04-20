@@ -5,6 +5,7 @@ includedir=@includedir@
 
 Name: libnih-dbus
 Description: NIH D-Bus Bindings Library
+Requires: dbus-1
 Version: @VERSION@
 Libs: -L${libdir} -lnih-dbus
 Cflags: -I${includedir}

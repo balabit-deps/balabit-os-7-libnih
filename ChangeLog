@@ -1,3 +1,89 @@
+2014-04-25  James Hunt  <james.hunt@ubuntu.com>
+
+	* nih/test_output.h: print_last(): Check variable to avoid
+	  passing NULL to atoi(3).  
+
+2013-03-13  Steve Langasek  <steve.langasek@ubuntu.com>
+
+	* nih/watch.c (nih_watch_walk_filter): New NihFileFilter function
+	passed to nih_dir_walk_scan() to ensure the nih_watch_new() filter
+	function is passed the NihWatch data rather than the data passed to
+	the nih_dir_walk() NihFileVisitor function (LP: #776532).
+
+	* nih/tests/test_watch.c (test_new): New test "with filter and data"
+	to ensure filter is passed correct value.
+
+2013-02-28  James Hunt  <james.hunt@ubuntu.com>
+
+	* Removal of gcc 'malloc' function attribute resulting from
+	  a clarification in its description which makes its use invalid.
+	  (LP: #1123588).
+
+2013-02-05  James Hunt  <james.hunt@ubuntu.com>
+
+	* nih/logging.c: nih_log_abort_message(): Remove erroneous check
+	  left over from use of __abort_msg weak symbol.
+	* nih/tests/test_logging.c: Remove unecessary check on whether
+	  __nih_abort_msg has an address.
+
+2012-12-13  Stéphane Graber  <stgraber@ubuntu.com>
+
+	* nih-dbus-tool/type.c, nih-dbus-tool/marshal.c: Update dbus code
+	generator to allow for empty lists for type 'as'.  This drops the
+	!= NULL check for NULL terminated arrays and moves the iteration
+	loop inside an 'if' statement.
+
+2012-12-11  Dmitrijs Ledkovs  <dmitrijs.ledkovs@canonical.com>
+
+	* nih/file.c (nih_dir_walk_scan): Fallback to lstat, if the
+	non-portable dirent.d_type is not available (LP: #672643) (Closes:
+	#695604).
+
+2012-12-10  Petr Lautrbach  <plautrba@redhat.com>
+
+	* nih/tests/test_file.c: don't use dirent.d_type (not portable)
+
+2012-10-25  James Hunt  <james.hunt@ubuntu.com>
+
+	* nih/logging.c: Use our own __nih_abort_msg rather than the
+	(e)glibc private symbol __abort_msg to avoid upgrade issues (LP: #997359).
+	* nih/tests/test_logging.c: Update tests for __nih_abort_msg.
+
+2011-08-31  James Hunt  <james.hunt@ubuntu.com>
+
+	* nih-dbus-tool/tests/test_com.netsplit.Nih.Test_object.c
+	(test_unix_fd_to_str): Sanity check value before invoking strchr in
+	case it returns address of null (which would give a misleading test
+	pass).
+	* nih-dbus-tool/tests/test_com.netsplit.Nih.Test_proxy.c
+	(test_unix_fd_to_str, test_unix_fd_to_str_sync): Sanity check value
+	before invoking strchr in case it returns address of null (which would
+	give a misleading test pass).
+	* nih/config.c (): nih_config_block_end: Add check to ensure strchr()
+	doesn't return address of null since this would result in a misleading
+	return value of TRUE.
+
+	* nih/string.c (nih_str_split): Fixes to avoid over-running
+	input string and also returning an empty string array entry
+	when repeat is true (LP: #834813).
+	* nih/tests/test_string.c (test_str_split): Added a lot of new
+	tests for nih_str_split().
+
+2011-08-26  James Hunt  <james.hunt@ubuntu.com>
+
+	* nih/io.c (nih_io_select_fds): Ensure number of fds being managed
+	is within limits.
+
+	* nih/config.c, nih/error.h, nih/io.c, nih/test_files.h: Correct
+	typos in comments.
+
+2011-06-20  James Hunt  <james.hunt@ubuntu.com>
+
+	* nih/watch.c (nih_watch_handle): Handle non-directory watches;
+	previously a file watch resulted in an invalid file path ending in
+	a single slash (LP:#777097).
+	* nih/tests/test_watch.c: Added explicit test for watch on a file.
+
 2010-12-23  Scott James Remnant  <scott@netsplit.com>
 
 	* NEWS: Release 1.0.3

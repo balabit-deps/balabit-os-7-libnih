@@ -95,7 +95,7 @@ NIH_BEGIN_EXTERN
 
 ParseStack *parse_stack_push (const void *parent, NihList *stack,
 			      ParseStackType type, void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 ParseStack *parse_stack_top  (NihList *stack);
 
 void        parse_start_tag  (XML_Parser xmlp, const char *tag,
@@ -103,7 +103,7 @@ void        parse_start_tag  (XML_Parser xmlp, const char *tag,
 void        parse_end_tag    (XML_Parser xmlp, const char *tag);
 
 Node *      parse_xml        (const void *parent, int fd, const char *filename)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NIH_END_EXTERN
 

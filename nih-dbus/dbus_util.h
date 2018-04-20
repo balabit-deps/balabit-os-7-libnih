@@ -26,7 +26,7 @@
 NIH_BEGIN_EXTERN
 
 char *nih_dbus_path (const void *parent, const char *root, ...)
-	__attribute__ ((sentinel, warn_unused_result, malloc));
+	__attribute__ ((sentinel, warn_unused_result));
 
 NIH_END_EXTERN
 

@@ -51,7 +51,7 @@ static char *demarshal_basic  (const void *parent,
 			       const char *prefix, const char *interface_symbol,
 			       const char *member_symbol, const char *symbol,
 			       NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 static char *demarshal_array  (const void *parent,
 			       DBusSignatureIter *iter,
 			       const char *parent_name,
@@ -62,7 +62,7 @@ static char *demarshal_array  (const void *parent,
 			       const char *prefix, const char *interface_symbol,
 			       const char *member_symbol, const char *symbol,
 			       NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 static char *demarshal_struct (const void *parent,
 			       DBusSignatureIter *iter,
 			       const char *parent_name,
@@ -73,7 +73,7 @@ static char *demarshal_struct (const void *parent,
 			       const char *prefix, const char *interface_symbol,
 			       const char *member_symbol, const char *symbol,
 			       NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 
 /**

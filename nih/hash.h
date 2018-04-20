@@ -141,7 +141,7 @@ typedef struct nih_hash {
  * @hash: hash table to iterate,
  * @iter: name of iterator variable.
  *
- * Expans to nested for statements that iterate over each entry in each
+ * Expands to nested for statements that iterate over each entry in each
  * bin of @hash, except for the bin head pointer, setting @iter to each
  * entry for the block within the loop.  A variable named _@iter_i is used
  * to iterate the hash bins.
@@ -203,7 +203,7 @@ NihHash *   nih_hash_new          (const void *parent, size_t entries,
 				   NihKeyFunction key_function,
 				   NihHashFunction hash_function,
 				   NihCmpFunction cmp_function)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NihList *   nih_hash_add          (NihHash *hash, NihList *entry);
 NihList *   nih_hash_add_unique   (NihHash *hash, NihList *entry);

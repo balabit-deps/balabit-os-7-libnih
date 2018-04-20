@@ -1574,7 +1574,7 @@ test_version (void)
 		output = tmpfile ();
 		TEST_CHILD (pid) {
 			TEST_DIVERT_STDOUT (output) {
-				char **args;
+				char **args __attribute__((unused));
 
 				args = nih_option_parser (NULL, argc, argv,
 							  options, FALSE);
@@ -1652,7 +1652,7 @@ test_help (void)
 			unsetenv ("COLUMNS");
 
 			TEST_DIVERT_STDOUT (output) {
-				char **args;
+				char **args __attribute__((unused));
 
 				args = nih_option_parser (NULL, argc, argv,
 							  options, FALSE);

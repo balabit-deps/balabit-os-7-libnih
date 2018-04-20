@@ -28,22 +28,22 @@ NIH_BEGIN_EXTERN
 int   symbol_valid     (const char *symbol);
 
 char *symbol_from_name (const void *parent, const char *name)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *symbol_impl      (const void *parent, const char *prefix,
 			const char *interface_name, const char *name,
 			const char *postfix)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *symbol_extern    (const void *parent, const char *prefix,
 			const char *interface_symbol, const char *midfix,
 			const char *symbol, const char *postfix)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *symbol_typedef   (const void *parent, const char *prefix,
 			const char *interface_symbol, const char *midfix,
 			const char *symbol, const char *postfix)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NIH_END_EXTERN
 

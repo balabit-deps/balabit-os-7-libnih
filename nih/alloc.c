@@ -119,8 +119,7 @@ typedef struct nih_alloc_ref {
 static inline int          nih_alloc_context_free   (NihAllocCtx *ctx);
 
 static inline NihAllocRef *nih_alloc_ref_new        (NihAllocCtx *parent,
-						     NihAllocCtx *child)
-	__attribute__ ((malloc));
+						     NihAllocCtx *child);
 static inline void         nih_alloc_ref_free       (NihAllocRef *ref);
 static inline NihAllocRef *nih_alloc_ref_lookup     (NihAllocCtx *parent,
 						     NihAllocCtx *child);

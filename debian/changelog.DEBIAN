@@ -1,0 +1,118 @@
+libnih (1.0.3-4) unstable; urgency=low
+
+  * Rebuild for new libc to update versioned dependency; this comes from
+    the __abort_msg dependency, dpkg-shlibs needs overriding since this is
+    actually a weak link, but this rebuild fixes things for now.
+    Closes: #625257.
+
+ -- Scott James Remnant <scott@netsplit.com>  Mon, 02 May 2011 15:08:33 -0700
+
+libnih (1.0.3-3) unstable; urgency=low
+
+  * New maintainer.  Closes: #624442.
+
+ -- Scott James Remnant <scott@netsplit.com>  Thu, 28 Apr 2011 14:26:05 -0700
+
+libnih (1.0.3-2) unstable; urgency=low
+
+  * Bump build dependency on libdbus-1-dev and dbus to (>= 1.4) for Unix file
+    descriptor passing support.
+
+ -- Michael Biebl <biebl@debian.org>  Thu, 10 Feb 2011 20:25:18 +0100
+
+libnih (1.0.3-1ubuntu1) natty; urgency=low
+
+  * Rebuild with libc6-dev (>= 2.13~).
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 18 Feb 2011 12:09:29 +0100
+
+libnih (1.0.3-1) unstable; urgency=low
+
+  * New upstream release.
+  * Bump debhelper compatibility level to 8 and update build dependency
+    accordingly.
+
+ -- Michael Biebl <biebl@debian.org>  Mon, 07 Feb 2011 22:19:13 +0100
+
+libnih (1.0.2-2) unstable; urgency=low
+
+  * Install library development files to /usr/lib and not /lib.
+  * Remove libtool *.la files as there are no reverse dependencies referencing
+    them.
+  * Bump Standards-Version to 3.9.1. No further changes.
+
+ -- Michael Biebl <biebl@debian.org>  Sun, 02 Jan 2011 21:09:40 +0100
+
+libnih (1.0.2-1ubuntu3) natty; urgency=low
+
+  * Disable some tests on ppc64 to build an initial package.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 18 Nov 2010 10:59:38 +0100
+
+libnih (1.0.2-1ubuntu2) maverick; urgency=low
+
+  * Re-add -fPIE to the testsuite on armel, removing all armel-specific tests;
+    current gcc-4.4 don't seem affected by the ICE anymore (see LP #398403).
+
+ -- Loïc Minier <loic.minier@linaro.org>  Mon, 23 Aug 2010 10:25:31 +0200
+
+libnih (1.0.2-1ubuntu1) maverick; urgency=low
+
+  * Rebuild with libc6-dev (>= 2.12~), after checking that
+    __abort_msg is available with the same signature in eglibc 2.12.
+  * Don't build the testsuite with -fPIE on armel; LP: #398403.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 30 May 2010 02:54:56 +0200
+
+libnih (1.0.2-1) unstable; urgency=low
+
+  * Initial upload to Debian. Closes: #585071
+  * Based on the Ubuntu package for Lucid done by Scott James Remnant with the
+    following changes:
+    - Switch packages to priority optional.
+    - Use binary:Version instead of Source-Version.
+    - Bump Standards-Version to 3.8.4.
+    - Add Homepage and Vcs-* fields.
+    - Don't symlink /usr/share/doc directories.
+    - Refer to versioned /usr/share/common-licenses/GPL-2 file in
+      debian/copyright.
+    - List all symbols explicitly instead of using a wildcard and add symbols
+      introduced in 1.0.1.
+    - Use the symbols files to create the correct version info instead of
+      specifying it manually via shlibs.
+    - Switch to source format 3.0 (quilt).
+    - Add watch file to track new upstream releases.
+
+ -- Michael Biebl <biebl@debian.org>  Sun, 13 Jun 2010 23:36:52 +0200
+
+libnih (1.0.1-1) lucid; urgency=low
+
+  * New upstream release:
+    - Add missing __nih_* symbols to linker version script so that we
+      can link Upstart's test suite.
+    - Glibc __abort_msg symbol now only linked as a weak symbol.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Thu, 04 Feb 2010 14:53:26 -0800
+
+libnih (1.0.0-2build1) lucid; urgency=low
+
+  * Rebuild to pick up relaxed dependency on libc6, after checking that
+    __abort_msg is available with the same signature in eglibc 2.11.
+    LP: #508702.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 18 Jan 2010 16:09:13 +0100
+
+libnih (1.0.0-2) lucid; urgency=low
+
+  * debian/control: Add build-dependency on dbus so the test suite can
+    pass on the buildds.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Sat, 28 Nov 2009 23:28:27 +0000
+
+libnih (1.0.0-1) lucid; urgency=low
+
+  * First upstream release.  Previously this code was included in the
+    upstart, mountall and ureadahead source packages.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Sat, 28 Nov 2009 21:14:00 +0000
+

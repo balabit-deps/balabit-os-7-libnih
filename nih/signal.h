@@ -76,7 +76,7 @@ void        nih_signal_reset       (void);
 
 NihSignal * nih_signal_add_handler (const void *parent, int signum,
 				   NihSignalHandler handler, void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 void        nih_signal_handler     (int signum);
 void        nih_signal_poll        (void);

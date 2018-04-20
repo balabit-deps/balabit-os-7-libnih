@@ -104,7 +104,7 @@ NihDBusPendingData *nih_dbus_pending_data_new (const void *parent,
 					       NihDBusReplyHandler handler,
 					       NihDBusErrorHandler error_handler,
 					       void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NIH_END_EXTERN
 

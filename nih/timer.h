@@ -59,7 +59,7 @@ typedef enum {
  * @months: months (1-12),
  * @wdays: days of week (0-7).
  *
- * Indidcates when scheduled timers should be run, each member is a bit
+ * Indicates when scheduled timers should be run, each member is a bit
  * field where the bit is 1 if the timer should be run for that value and
  * 0 if not.
  **/
@@ -117,14 +117,14 @@ void      nih_timer_init          (void);
 
 NihTimer *nih_timer_add_timeout   (const void *parent, time_t timeout,
 				   NihTimerCb callback, void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 NihTimer *nih_timer_add_periodic  (const void *parent, time_t period,
 				   NihTimerCb callback, void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 NihTimer *nih_timer_add_scheduled (const void *parent,
 				   NihTimerSchedule *schedule,
 				   NihTimerCb callback, void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NihTimer *nih_timer_next_due       (void);
 void      nih_timer_poll           (void);

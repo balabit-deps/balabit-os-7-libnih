@@ -65,7 +65,7 @@ Property *property_new                       (const void *parent,
 					      const char *name,
 					      const char *type,
 					      NihDBusAccess access)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 int       property_start_tag                 (XML_Parser xmlp, const char *tag,
 					      char * const *attr)
@@ -88,7 +88,7 @@ char *    property_object_get_function       (const void *parent,
 					      NihList *prototypes,
 					      NihList *handlers,
 					      NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *    property_object_set_function       (const void *parent,
 					      const char *prefix,
 					      Interface *interface,
@@ -96,7 +96,7 @@ char *    property_object_set_function       (const void *parent,
 					      NihList *prototypes,
 					      NihList *handlers,
 					      NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *    property_proxy_get_function        (const void *parent,
 					      const char *prefix,
@@ -104,7 +104,7 @@ char *    property_proxy_get_function        (const void *parent,
 					      Property *property,
 					      NihList *prototypes,
 					      NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *    property_proxy_get_notify_function (const void *parent,
 					      const char *prefix,
 					      Interface *interface,
@@ -112,7 +112,7 @@ char *    property_proxy_get_notify_function (const void *parent,
 					      NihList *prototypes,
 					      NihList *typedefs,
 					      NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *    property_proxy_set_function        (const void *parent,
 					      const char *prefix,
@@ -120,7 +120,7 @@ char *    property_proxy_set_function        (const void *parent,
 					      Property *property,
 					      NihList *prototypes,
 					      NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *    property_proxy_set_notify_function (const void *parent,
 					      const char *prefix,
 					      Interface *interface,
@@ -128,7 +128,7 @@ char *    property_proxy_set_notify_function (const void *parent,
 					      NihList *prototypes,
 					      NihList *typedefs,
 					      NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *    property_proxy_get_sync_function   (const void *parent,
 					      const char *prefix,
@@ -136,14 +136,14 @@ char *    property_proxy_get_sync_function   (const void *parent,
 					      Property *property,
 					      NihList *prototypes,
 					      NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *    property_proxy_set_sync_function   (const void *parent,
 					      const char *prefix,
 					      Interface *interface,
 					      Property *property,
 					      NihList *prototypes,
 					      NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NIH_END_EXTERN
 

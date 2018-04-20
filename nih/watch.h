@@ -156,7 +156,7 @@ NihWatch *nih_watch_new     (const void *parent, const char *path, int subdirs,
 			     NihCreateHandler create_handler,
 			     NihModifyHandler modify_handler,
 			     NihDeleteHandler delete_handler, void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 int       nih_watch_add     (NihWatch *watch, const char *path, int subdirs)
 	__attribute__ ((warn_unused_result));

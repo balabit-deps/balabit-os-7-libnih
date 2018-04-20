@@ -82,7 +82,7 @@ NIH_BEGIN_EXTERN
 
 char *nih_file_read         (const void *parent, const char *path,
 			     size_t *length)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 void *nih_file_map          (const char *path, int flags, size_t *length)
 	__attribute__ ((warn_unused_result));

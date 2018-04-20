@@ -40,10 +40,10 @@
 /* Prototypes for static functions */
 static char *symbol_strcat_interface (char **str, const void *parent,
 				      const char *format, ...)
-	__attribute__ ((format (printf, 3, 4), warn_unused_result, malloc));
+	__attribute__ ((format (printf, 3, 4), warn_unused_result));
 static char *symbol_strcat_title     (char **str, const void *parent,
 				      const char *format, ...)
-	__attribute__ ((format (printf, 3, 4), warn_unused_result, malloc));
+	__attribute__ ((format (printf, 3, 4), warn_unused_result));
 
 
 /**

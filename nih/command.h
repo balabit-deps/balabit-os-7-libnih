@@ -123,7 +123,7 @@ int         nih_command_parser (const void *parent, int argc, char *argv[],
 
 NihCommand *nih_command_join   (const void *parent,
 				const NihCommand *a, const NihCommand *b)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NIH_END_EXTERN
 

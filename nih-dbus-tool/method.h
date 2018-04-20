@@ -62,7 +62,7 @@ NIH_BEGIN_EXTERN
 int       method_name_valid            (const char *name);
 
 Method *  method_new                   (const void *parent, const char *name)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 int       method_start_tag             (XML_Parser xmlp, const char *tag,
 					char * const *attr)
@@ -82,33 +82,33 @@ char *    method_object_function       (const void *parent, const char *prefix,
 					Interface *interface, Method *method,
 					NihList *prototypes, NihList *handlers,
 					NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *    method_reply_function        (const void *parent, const char *prefix,
 					Interface *interface, Method *method,
 					NihList *prototypes, NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *    method_proxy_function        (const void *parent, const char *prefix,
 					Interface *interface, Method *method,
 					NihList *prototypes, NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *    method_proxy_notify_function (const void *parent, const char *prefix,
 					Interface *interface, Method *method,
 					NihList *prototypes, NihList *typedefs,
 					NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *    method_proxy_sync_function   (const void *parent, const char *prefix,
 					Interface *interface, Method *method,
 					NihList *prototypes, NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *    method_args_array            (const void *parent, const char *prefix,
 					Interface *interface, Method *method,
 					NihList *prototypes)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NIH_END_EXTERN
 

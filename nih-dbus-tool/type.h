@@ -94,43 +94,43 @@ const char *type_basic_type       (int dbus_type);
 
 char *      type_of               (const void * parent,
 				   DBusSignatureIter *iter)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 TypeVar *   type_var_new          (const void *parent, const char *type,
 				   const char *name)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *      type_var_to_string    (const void *parent, TypeVar *var)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *      type_var_layout       (const void *parent, NihList *vars)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 TypeFunc *  type_func_new         (const void *parent, const char *type,
 				   const char *name)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *      type_func_to_string   (const void *parent, TypeFunc *func)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *      type_func_to_typedef  (const void *parent, TypeFunc *func)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *      type_func_layout      (const void *parent, NihList *funcs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 TypeStruct *type_struct_new       (const void *parent, const char *name)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *      type_struct_to_string (const void *parent, TypeStruct *structure)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *      type_to_const         (char **type, const void *parent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *      type_to_pointer       (char **type, const void *parent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *      type_to_static        (char **type, const void *parent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *      type_to_extern        (char **type, const void *parent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *      type_strcat_assert    (char **block, const void *parent,
 				   TypeVar *var, TypeVar *prev, TypeVar *next)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NIH_END_EXTERN
 

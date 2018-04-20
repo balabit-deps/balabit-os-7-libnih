@@ -26,9 +26,9 @@
 NIH_BEGIN_EXTERN
 
 char *indent  (char **str, const void *parent, int level)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *comment (char **str, const void *parent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NIH_END_EXTERN
 

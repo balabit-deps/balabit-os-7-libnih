@@ -269,7 +269,7 @@ void          nih_io_init                (void);
 NihIoWatch *  nih_io_add_watch           (const void *parent, int fd,
 					  NihIoEvents events,
 					  NihIoWatcher watcher, void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 void          nih_io_select_fds          (int *nfds, fd_set *readfds,
 					  fd_set *writefds, fd_set *exceptfds);
@@ -278,12 +278,12 @@ void          nih_io_handle_fds          (fd_set *readfds, fd_set *writewfds,
 
 
 NihIoBuffer * nih_io_buffer_new          (const void *parent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 int           nih_io_buffer_resize       (NihIoBuffer *buffer, size_t grow);
 char *        nih_io_buffer_pop          (const void *parent,
 					  NihIoBuffer *buffer, size_t *len)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 void          nih_io_buffer_shrink       (NihIoBuffer *buffer, size_t len);
 int           nih_io_buffer_push         (NihIoBuffer *buffer,
 					  const char *str, size_t len)
@@ -291,7 +291,7 @@ int           nih_io_buffer_push         (NihIoBuffer *buffer,
 
 
 NihIoMessage *nih_io_message_new         (const void *parent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 int           nih_io_message_add_control (NihIoMessage *message, int level,
 					  int type, socklen_t len,
@@ -300,7 +300,7 @@ int           nih_io_message_add_control (NihIoMessage *message, int level,
 
 NihIoMessage *nih_io_message_recv        (const void *parent, int fd,
 					  size_t *len)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 ssize_t       nih_io_message_send        (NihIoMessage *message, int fd)
 	__attribute__ ((warn_unused_result));
 
@@ -310,7 +310,7 @@ NihIo *       nih_io_reopen              (const void *parent, int fd,
 					  NihIoCloseHandler close_handler,
 					  NihIoErrorHandler error_handler,
 					  void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 void          nih_io_shutdown            (NihIo *io);
 int           nih_io_destroy             (NihIo *io);
 
@@ -319,14 +319,14 @@ void          nih_io_send_message        (NihIo *io, NihIoMessage *message);
 
 char *        nih_io_read                (const void *parent, NihIo *io,
 					  size_t *len)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 int           nih_io_write               (NihIo *io, const char *str,
 					  size_t len)
 	__attribute__ ((warn_unused_result));
 
 char *        nih_io_get                 (const void *parent, NihIo *io,
 					  const char *delim)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 int           nih_io_printf              (NihIo *io, const char *format, ...)
 	__attribute__ ((warn_unused_result, format (printf, 2, 3)));

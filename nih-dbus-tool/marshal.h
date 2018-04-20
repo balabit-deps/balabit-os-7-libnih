@@ -35,7 +35,7 @@ char *marshal (const void *parent, DBusSignatureIter *iter,
 	       const char *prefix, const char *interface_symbol,
 	       const char *member_symbol, const char *symbol,
 	       NihList *structs)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NIH_END_EXTERN
 

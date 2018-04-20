@@ -37,7 +37,7 @@
  * after a known entry, and remove an entry from the list.
  *
  * List entries may be created in one of two ways.  The most common is to
- * embed the NihList structure as the frist member of your own structure,
+ * embed the NihList structure as the first member of your own structure,
  * and initialise it with nih_list_init() after allocating the structure.
  * Alternatively you may create NihListEntry structures with
  * nih_list_entry_new() and point at your own data from them.
@@ -196,10 +196,10 @@ NIH_BEGIN_EXTERN
 
 void          nih_list_init      (NihList *entry);
 NihList *     nih_list_new       (const void *parent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NihListEntry *nih_list_entry_new (const void *parent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 
 NihList *     nih_list_add       (NihList *list, NihList *entry);

@@ -470,7 +470,8 @@ void
 test_lookup (void)
 {
 	NihHash *hash;
-	NihList *entry1, *entry2, *entry3, *ptr;
+	NihList *entry1, *entry2, *ptr;
+	NihList *entry3 __attribute__((unused));
 
 	TEST_FUNCTION ("nih_hash_lookup");
 	hash = nih_hash_string_new (NULL, 0);

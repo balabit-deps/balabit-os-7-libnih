@@ -7950,7 +7950,7 @@ test_parse_xml (void)
 
 		TEST_EQ_P (node, NULL);
 
-		TEST_FILE_EQ (output, ("test:foo:2:0: "
+		TEST_FILE_EQ (output, ("test:foo:1:36: "
 				       "Invalid object path in <node> name attribute\n"));
 		TEST_FILE_END (output);
 		TEST_FILE_RESET (output);

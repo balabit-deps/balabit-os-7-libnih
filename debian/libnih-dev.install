@@ -1,0 +1,6 @@
+lib/*/libnih.a
+lib/*/libnih.so
+usr/include/libnih.h
+usr/include/nih
+usr/lib/*/pkgconfig/libnih.pc
+usr/share/aclocal/libnih.m4

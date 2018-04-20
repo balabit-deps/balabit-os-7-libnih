@@ -457,7 +457,7 @@ void
 test_main_loop (void)
 {
 	NihMainLoopFunc *func;
-	NihTimer        *timer;
+	NihTimer        *timer __attribute__((unused));
 	int              ret;
 
 	/* Check that we can run through the main loop, and that the

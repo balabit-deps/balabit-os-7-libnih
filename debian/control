@@ -1,0 +1,89 @@
+Source: libnih
+Section: libs
+Priority: required
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Debian QA Group <packages@qa.debian.org>
+Standards-Version: 3.9.8
+Build-Depends: autopoint,
+               dbus (>= 1.4),
+               debhelper (>= 9),
+               dh-autoreconf,
+               dpkg-dev (>= 1.16.1~),
+               libdbus-1-dev (>= 1.4),
+               libdbus-1-dev:native (>= 1.4),
+               libexpat1-dev (>= 2.0.0),
+               libexpat1-dev:native (>= 2.0.0),
+               pkg-config (>= 0.22),
+Vcs-Bzr: lp:ubuntu/libnih
+XSC-Debian-Vcs-Git: git://git.debian.org/git/collab-maint/libnih.git
+XSC-Debian-Vcs-Browser: http://git.debian.org/?p=collab-maint/libnih.git;a=summary
+Homepage: https://launchpad.net/libnih
+XS-Testsuite: autopkgtest
+
+Package: libnih1
+Architecture: any
+Pre-Depends: ${misc:Depends}, ${misc:Pre-Depends}, ${shlibs:Depends}
+Multi-Arch: same
+Description: NIH Utility Library
+ libnih is a light-weight "standard library" of C functions to ease the
+ development of other libraries and applications, especially those
+ normally found in /lib.
+ .
+ This package contains the shared library.
+
+Package: libnih-dev
+Priority: optional
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libnih1 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Description: NIH Utility Library (development files)
+ libnih is a light-weight "standard library" of C functions to ease the
+ development of other libraries and applications, especially those
+ normally found in /lib.
+ .
+ This package contains the static library and C header files which are
+ needed for developing software using libnih.
+
+Package: libnih-dbus1
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libnih1 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Multi-Arch: same
+Description: NIH D-Bus Bindings Library
+ libnih-dbus is a D-Bus bindings library that integrates with the main
+ loop provided by libnih.
+ .
+ This package contains the shared library.
+
+Package: libnih-dbus-dev
+Priority: optional
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libdbus-1-dev,
+         libnih-dbus1 (= ${binary:Version}),
+         libnih-dev (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: nih-dbus-tool (= ${binary:Version})
+Description: NIH D-Bus Bindings Library (development files)
+ libnih-dbus is a D-Bus bindings library that integrates with the main
+ loop provided by libnih.
+ .
+ This package contains the static library and C header files which are
+ needed for developing software using libnih-dbus.
+
+Package: nih-dbus-tool
+Section: devel
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Recommends: libnih-dbus-dev (= ${binary:Version})
+Description: NIH D-Bus Binding Tool
+ nih-dbus-tool generates C source code from the D-Bus Introspection XML
+ data provided by most services; either to make implementing the
+ described objects in C programs or to make proxying to the described
+ remote objects easier.
+ .
+ The generated code requires libnih-dbus-dev to be compiled.

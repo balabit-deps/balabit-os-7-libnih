@@ -140,10 +140,10 @@ int       nih_config_token           (const char *file, size_t len,
 char *    nih_config_next_token      (const void *parent, const char *file,
 				      size_t len, size_t *pos, size_t *lineno,
 				      const char *delim, int dequote)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *    nih_config_next_arg        (const void *parent, const char *file,
 				      size_t len, size_t *pos, size_t *lineno)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 void      nih_config_next_line       (const char *file, size_t len,
 				      size_t *pos, size_t *lineno);
 
@@ -155,15 +155,15 @@ int       nih_config_skip_comment    (const char *file, size_t len,
 
 char **   nih_config_parse_args      (const void *parent, const char *file,
 				      size_t len, size_t *pos, size_t *lineno)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *    nih_config_parse_command   (const void *parent, const char *file,
 				      size_t len, size_t *pos, size_t *lineno)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char *    nih_config_parse_block     (const void *parent, const char *file,
 				      size_t len, size_t *pos, size_t *lineno,
 				      const char *type)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 int       nih_config_skip_block      (const char *file, size_t len,
 				      size_t *lineno, size_t *pos,
 				      const char *type, size_t *endpos)

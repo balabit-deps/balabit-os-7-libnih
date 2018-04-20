@@ -98,7 +98,7 @@ void           nih_child_init      (void);
 NihChildWatch *nih_child_add_watch (const void *parent, pid_t pid,
 				    NihChildEvents events,
 				    NihChildHandler handler, void *data)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 void           nih_child_poll      (void);
 

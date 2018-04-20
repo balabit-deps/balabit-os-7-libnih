@@ -2,8 +2,8 @@
  *
  * watch.c - watching of files and directories with inotify
  *
- * Copyright © 2009 Scott James Remnant <scott@netsplit.com>.
- * Copyright © 2009 Canonical Ltd.
+ * Copyright © 2011 Scott James Remnant <scott@netsplit.com>.
+ * Copyright © 2011 Canonical Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2, as
@@ -71,6 +71,9 @@ static void            nih_watch_handle      (NihWatch *watch,
 					      uint32_t events, uint32_t cookie,
 					      const char *name,
 					      int *caught_free);
+static int             nih_watch_walk_filter (void *data, const char *path,
+					      int is_dir)
+	__attribute__ ((warn_unused_result));
 
 
 /**
@@ -91,7 +94,7 @@ static void            nih_watch_handle      (NihWatch *watch,
  * sub-directories will be automatically watched.
  *
  * Additionally, the set of files and directories within @path can be
- * limited by passing a @filter function which will recieve the paths and
+ * limited by passing a @filter function which will receive the paths and
  * may return TRUE to indicate that the path received should not be watched.
  *
  * When a file is created within @path, or moved from outside this location
@@ -104,7 +107,7 @@ static void            nih_watch_handle      (NihWatch *watch,
  * files that exist under @path when the watch is first added.  This only
  * occurs if the watch can be added.
  *
- * This is a very high level wrapped around the inotify API; lower levels
+ * This is a very high level wrapper around the inotify API; lower levels
  * can be obtained using the inotify API itself and some of the helper
  * functions used by this one.
  *
@@ -182,6 +185,35 @@ nih_watch_new (const void       *parent,
 	nih_alloc_set_destructor (watch, nih_watch_destroy);
 
 	return watch;
+}
+
+
+ /**
+ * nih_watch_walk_filter:
+ * @data: NihWatch,
+ * @path: path to file,
+ * @is_dir: TRUE if @path is a directory.
+ *
+ * Callback function for nih_dir_walk(), used by nih_watch_add() to wrap
+ * the user-specified NihFileFilter (watch->filter) with a filter that can
+ * take watch itself as an argument.
+ *
+ * Returns: TRUE if the path should be ignored, FALSE otherwise.
+ **/
+static int
+nih_watch_walk_filter (void *data, const char *path, int is_dir)
+{
+    NihWatch *watch;
+
+    watch = (NihWatch *)data;
+
+    nih_assert (watch);
+
+    /* No filter, so accept all files */
+    if (! watch->filter)
+           return FALSE;
+
+    return watch->filter (watch->data, path, is_dir);
 }
 
 
@@ -295,7 +327,7 @@ nih_watch_add (NihWatch   *watch,
 	 * one; errors within the walk are warned automatically, so if this
 	 * fails, it means we literally couldn't watch the top-level.
 	 */
-	if (subdirs && (nih_dir_walk (path, watch->filter,
+	if (subdirs && (nih_dir_walk (path, nih_watch_walk_filter,
 				      (NihFileVisitor)nih_watch_add_visitor,
 				      NULL, watch) < 0)) {
 		NihError *err;
@@ -494,12 +526,21 @@ nih_watch_handle (NihWatch       *watch,
 		return;
 	}
 
+	/* Every other event must come with a name */
+	if (name && *name) {
 
-	/* Every other event must come with a name. */
-	if ((! name) || strchr (name, '/'))
-		return;
+		/* If name refers to a directory, there should be no associated
+		 * path - just the name of the path element.
+		 */
+		if (strchr (name, '/'))
+			return;
 
-	path = NIH_MUST (nih_sprintf (NULL, "%s/%s", handle->path, name));
+		/* Event occured for file within a watched directory */
+		path = NIH_MUST (nih_sprintf (NULL, "%s/%s", handle->path, name));
+	} else {
+		/* File event occured */
+		path = NIH_MUST (nih_strdup (NULL, handle->path));
+	}
 
 	/* Check the filter */
 	if (watch->filter && watch->filter (watch->data, path,

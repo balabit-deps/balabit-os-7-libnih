@@ -35,60 +35,60 @@
 NIH_BEGIN_EXTERN
 
 char * nih_sprintf          (const void *parent, const char *format, ...)
-	__attribute__ ((format (printf, 2, 3), warn_unused_result, malloc));
+	__attribute__ ((format (printf, 2, 3), warn_unused_result));
 
 char * nih_vsprintf         (const void *parent, const char *format,
 			     va_list args)
-	__attribute__ ((format (printf, 2, 0), warn_unused_result, malloc));
+	__attribute__ ((format (printf, 2, 0), warn_unused_result));
 
 char * nih_strdup           (const void *parent, const char *str)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char * nih_strndup          (const void *parent, const char *str, size_t len)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char * nih_strcat           (char **str, const void *parent, const char *src)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char * nih_strncat          (char **str, const void *parent, const char *src,
 			     size_t len)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char * nih_strcat_sprintf   (char **str, const void *parent,
 			     const char *format, ...)
-	__attribute__ ((format (printf, 3, 4), warn_unused_result, malloc));
+	__attribute__ ((format (printf, 3, 4), warn_unused_result));
 char * nih_strcat_vsprintf  (char **str, const void *parent,
 			     const char *format, va_list args)
-	__attribute__ ((format (printf, 3, 0), warn_unused_result, malloc));
+	__attribute__ ((format (printf, 3, 0), warn_unused_result));
 
 char **nih_str_split        (const void *parent, const char *str,
 			     const char *delim, int repeat)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char **nih_str_array_new    (const void *parent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char **nih_str_array_add    (char ***array, const void *parent, size_t *len,
 			     const char *str)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char **nih_str_array_addn   (char ***array, const void *parent, size_t *len,
 			     const char *str, size_t strlen)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char **nih_str_array_addp   (char ***array, const void *parent, size_t *len,
 			     void *ptr)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char **nih_str_array_copy   (const void *parent, size_t *len,
 			     char * const *array)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char **nih_str_array_append (char ***array, const void *parent, size_t *len,
 			     char * const *args)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 char * nih_str_wrap         (const void *parent, const char *str, size_t len,
 		             size_t first_indent, size_t indent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 size_t nih_str_screen_width (void);
 char * nih_str_screen_wrap  (const void *parent, const char *str,
 			     size_t first_indent, size_t indent)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NIH_END_EXTERN
 

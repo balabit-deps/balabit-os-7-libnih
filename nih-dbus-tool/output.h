@@ -35,9 +35,9 @@ int   output          (const char *source_path, int source_fd,
 	__attribute__ ((warn_unused_result));
 
 char *output_preamble (const void *parent, const char *path)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 char *output_sentinel (const void *parent, const char *path)
-	__attribute__ ((warn_unused_result, malloc));
+	__attribute__ ((warn_unused_result));
 
 NIH_END_EXTERN
 

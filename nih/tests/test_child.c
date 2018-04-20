@@ -360,6 +360,14 @@ test_poll (void)
 
 	waitid (P_PID, pid, &siginfo, WSTOPPED | WNOWAIT);
 
+	/* ptrace might catch the SIGCONT emitted with PTRACE_CONT, catch it 
+	   and wait for the next event.
+	 */
+	if (siginfo.si_code == CLD_TRAPPED && siginfo.si_status == SIGCONT) {
+		assert0 (ptrace (PTRACE_CONT, pid, NULL, NULL));
+		waitid (P_PID, pid, &siginfo, WSTOPPED | WNOWAIT);
+	}
+
 	watch = nih_child_add_watch (NULL, pid, NIH_CHILD_TRAPPED,
 				     my_handler, &watch);
 
@@ -419,6 +427,14 @@ test_poll (void)
 
 	/* Wait for ptrace to stop the parent (signalling the fork) */
 	waitid (P_PID, pid, &siginfo, WSTOPPED | WNOWAIT);
+
+	/* ptrace might catch the SIGCONT emitted with PTRACE_CONT, catch it
+	   and wait for the next event.
+	 */
+	if (siginfo.si_code == CLD_TRAPPED && siginfo.si_status == SIGCONT) {
+		assert0 (ptrace (PTRACE_CONT, pid, NULL, NULL));
+		waitid (P_PID, pid, &siginfo, WSTOPPED | WNOWAIT);
+	}
 
 	/* Will be able to get the child pid now, we have to do it here
 	 * because we want to wait on it to ensure the test is synchronous;
@@ -488,6 +504,14 @@ test_poll (void)
 	assert0 (ptrace (PTRACE_CONT, pid, NULL, SIGCONT));
 
 	waitid (P_PID, pid, &siginfo, WSTOPPED | WNOWAIT);
+
+	/* ptrace might catch the SIGCONT emitted with PTRACE_CONT, catch it
+	   and wait for the next event.
+	 */
+	if (siginfo.si_code == CLD_TRAPPED && siginfo.si_status == SIGCONT) {
+		assert0 (ptrace (PTRACE_CONT, pid, NULL, NULL));
+		waitid (P_PID, pid, &siginfo, WSTOPPED | WNOWAIT);
+	}
 
 	watch = nih_child_add_watch (NULL, pid, NIH_CHILD_PTRACE,
 				     my_handler, &watch);
